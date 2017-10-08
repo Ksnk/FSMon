@@ -128,11 +128,9 @@ if (!empty($result)) {
     // log 
 
     if (@$config['log']) {
-        $logs_dir = dirname(__FILE__) . DIRECTORY_SEPARATOR . 'logs';
+        $logs_dir = dirname(__FILE__) . DIRECTORY_SEPARATOR . 'logs' . DIRECTORY_SEPARATOR . date('Ym');
         if(!is_dir($logs_dir))@mkdir($logs_dir, 0770, 1);
-        $month_dir = $logs_dir . DIRECTORY_SEPARATOR . date('Ym');
-        if(!is_dir($month_dir))@mkdir($month_dir, 0770, 1);
-        file_put_contents($month_dir . DIRECTORY_SEPARATOR . date('d-H-i') . '.log', $buffer);
+        file_put_contents($logs_dir . DIRECTORY_SEPARATOR . date('d-H-i') . '.log', $buffer);
     }
 
     // mail
